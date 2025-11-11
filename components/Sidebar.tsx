@@ -1,5 +1,5 @@
 import React from 'react';
-import { GraduationCap, FileScan, Compass, Library, User } from 'lucide-react';
+import { GraduationCap, FileScan, Compass, Library, User, Loader2 } from 'lucide-react';
 import { AppView } from '../types';
 
 interface SidebarProps {
@@ -7,6 +7,7 @@ interface SidebarProps {
   onNavigate: (view: AppView) => void;
   isOpenOnMobile: boolean;
   onCloseMobileMenu: () => void;
+  ongoingAnalysesCount: number;
 }
 
 const NavItem: React.FC<{
@@ -15,7 +16,8 @@ const NavItem: React.FC<{
   onNavigate: (view: AppView) => void;
   icon: React.ElementType;
   label: string;
-}> = ({ view, currentView, onNavigate, icon: Icon, label }) => {
+  indicator?: React.ReactNode;
+}> = ({ view, currentView, onNavigate, icon: Icon, label, indicator }) => {
   const isActive = currentView === view;
   return (
     <button
@@ -27,12 +29,13 @@ const NavItem: React.FC<{
       }`}
     >
       <Icon className="h-5 w-5 mr-3" />
-      <span>{label}</span>
+      <span className="flex-1 text-left">{label}</span>
+      {indicator}
     </button>
   );
 };
 
-const Sidebar: React.FC<SidebarProps> = ({ currentView, onNavigate, isOpenOnMobile, onCloseMobileMenu }) => {
+const Sidebar: React.FC<SidebarProps> = ({ currentView, onNavigate, isOpenOnMobile, onCloseMobileMenu, ongoingAnalysesCount }) => {
   return (
     <>
     {/* Mobile Overlay */}
@@ -62,6 +65,14 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, onNavigate, isOpenOnMobi
           onNavigate={onNavigate}
           icon={FileScan}
           label="PDF Analysis"
+          indicator={
+            ongoingAnalysesCount > 0 ? (
+                <div className="flex items-center gap-1">
+                    <span className="text-xs font-semibold">{ongoingAnalysesCount}</span>
+                    <Loader2 className="h-4 w-4 animate-spin"/>
+                </div>
+            ) : undefined
+          }
         />
         <NavItem
           view="library"

@@ -30,3 +30,22 @@ export interface SearchResult {
   category?: string;
   citationCount?: number;
 }
+
+export interface AnalysisSession {
+  id: string;
+  fileName: string;
+  file: File;
+  framework: string;
+  status: 'loading' | 'completed' | 'error';
+  result?: AnalysisResult;
+  pageContents?: PageContent[];
+  error?: string;
+  createdAt: string;
+}
+
+export interface HighlightRect {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
