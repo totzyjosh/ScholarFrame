@@ -1,0 +1,5 @@
+{
+  "name": "ScholarFrame",
+  "description": "An AI-powered academic research assistant that helps find sources, analyze PDFs with theoretical frameworks, and extract key insights.",
+  "requestFramePermissions": []
+}
