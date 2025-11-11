@@ -11,12 +11,12 @@
         extend: {
           colors: {
             primary: {
-              light: '#e0e7ff', // Equivalent to Tailwind's indigo-100
-              DEFAULT: '#4f46e5', // Equivalent to Tailwind's indigo-600
+              light: '#e0e7ff',
+              DEFAULT: '#4f46e5',
             },
-            border: '#e2e8f0', // Equivalent to Tailwind's slate-200
-            'slate-logo': '#1e293b', // Equivalent to Tailwind's slate-800
-            'muted-foreground': '#64748b', // Equivalent to Tailwind's slate-500
+            border: '#e2e8f0',
+            'slate-logo': '#1e293b',
+            'muted-foreground': '#64748b',
           },
         }
       }
@@ -45,6 +45,7 @@
 </head>
 <body>
   <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
+  <!-- Use a relative module path so the browser resolves assets correctly when served from a subpath -->
+  <script type="module" src="./index.tsx"></script>
 </body>
 </html>
