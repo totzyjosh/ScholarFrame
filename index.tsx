@@ -1,15 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
-const rootElement = document.getElementById('root');
-if (!rootElement) {
-  throw new Error("Could not find root element to mount to");
-}
-
-const root = ReactDOM.createRoot(rootElement);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+export default defineConfig({
+  // For GitHub project pages use the repo name as the base.
+  // Replace '/ScholarFrame/' with '/<your-repo-name>/' for other repos.
+  base: '/ScholarFrame/',
+  plugins: [react()]
+})
