@@ -1,9 +1,15 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './App'
+import './index.css' // remove or adjust if you don't have this file
 
-export default defineConfig({
-  // For GitHub project pages use the repo name as the base.
-  // Replace '/ScholarFrame/' with '/<your-repo-name>/' for other repos.
-  base: '/ScholarFrame/',
-  plugins: [react()]
-})
+const container = document.getElementById('root')
+if (!container) {
+  throw new Error('Root container not found (expected a <div id="root"> in index.html)')
+}
+
+createRoot(container).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+)
